@@ -2,20 +2,19 @@
 <head>
     <title>Exemplo de App</title>
     <meta charset="utf-8">
+    <script src="js/jquery-2.1.3.min.js"></script>
 </head>
 <body>
 
 <button type="button">Click Me!</button>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     (function($){
-        function processForm(e) {
+        function processClick(e) {
             $.ajax({
-              type: "POST",  dataType: 'text',
-              url: 'http://127.0.0.1:5000/hello',
-              success: function( data, textStatus, jQxhr ){
-                  $('html').html(data);
+              type: "GET",  dataType: 'text',
+              url: '/hello',
+              success: function(data){
+                  console.log(data);
               },
               error: function( jqXhr, textStatus, errorThrown ){
                   console.log( errorThrown );
@@ -24,7 +23,7 @@
             });
             e.preventDefault();
         }
-       $("button").click(processForm);
+       $("button").click(processClick);
     })(jQuery);
 </script>
 </body>
