@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Exemplo de App</title>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<button type="button">Click Me!</button>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    (function($){
+        function processForm(e) {
+            $.ajax({
+              type: "POST",  dataType: 'text',
+              url: 'http://127.0.0.1:5000/hello',
+              success: function( data, textStatus, jQxhr ){
+                  $('html').html(data);
+              },
+              error: function( jqXhr, textStatus, errorThrown ){
+                  console.log( errorThrown );
+              },
+
+            });
+            e.preventDefault();
+        }
+       $("button").click(processForm);
+    })(jQuery);
+</script>
+</body>
+</html>
